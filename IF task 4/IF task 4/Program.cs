@@ -19,9 +19,13 @@ namespace IF_task_4
             }
 
             Array.Sort(arr);
+
+            Console.Write("Annoit Numerot ");
+
             foreach (int value in arr)
             {
-                Console.Write(value + " ");
+
+                Console.Write( value + " ");
             }
 
             Console.ReadKey();

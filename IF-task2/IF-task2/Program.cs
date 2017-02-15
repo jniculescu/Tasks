@@ -22,13 +22,13 @@ namespace IF_task2
 
             if (i % 2 == 1)
             {
-                Console.WriteLine("Luku on pariton");
+                Console.WriteLine("Luku" + i + "on pariton");
                 Console.ReadKey();
             }
 
             else
             {
-                Console.WriteLine("Luku on parillinen");
+                Console.WriteLine("Luku " + i + "on parillinen");
                 Console.ReadKey();
             }
 

@@ -11,10 +11,10 @@ namespace Loop_Task_4
         static void Main(string[] args)
         {
             int N = 0;
-            int summa = 0;
+            int sum = 0;
             
             //input
-            Console.Write("Anna numero: ");
+            Console.Write("Enter number: ");
             N = int.Parse(Console.ReadLine());
 
             //Looping
@@ -24,7 +24,7 @@ namespace Loop_Task_4
             {
                 for (int i = 1; i <= N; i++)
                 {
-                    summa = summa + i;
+                    sum = sum + i;
                 }
             }
 
@@ -33,11 +33,11 @@ namespace Loop_Task_4
             {
                 for (int i = -1; i >= N; i--)
                 {
-                    summa = summa + (i);
+                    sum = sum + (i);
                 }
             }
 
-            Console.WriteLine("Summa: " + summa);
+            Console.WriteLine("Sum: " + sum);
             Console.ReadKey();
         }
     }

@@ -8,33 +8,34 @@ namespace Loop_task_3
 {
     class Program
     {
+        //Jani Niculescu 20.2.2017 Loop task 3
         static void Main(string[] args)
         {
             int N = 0;
-            int summa1 = 0;
-            int summa2 = 0;
+            int sum1 = 0;
+            int sum2 = 0;
 
             //input
-            Console.Write("Anna numero: ");
+            Console.Write("Enter number: ");
             N = int.Parse(Console.ReadLine());
 
-            //Loopin
+            //Looping
             for (int i = 1; i <= N; i++)
             {
                 //even number
                 if (i % 2 == 0)
                 {
-                    summa1 = summa1 + i;
+                    sum1 = sum1 + i;
                 }
                 //odd number
                 else
                 {
-                    summa2 = summa2 + i;
+                    sum2 = sum2 + i;
                 }
             }
 
-            Console.WriteLine("Parillisten summa: " + summa1);
-            Console.WriteLine("Parittomien summa: " + summa2);
+            Console.WriteLine("Even sum: " + sum1);
+            Console.WriteLine("Odd sum: " + sum2);
             Console.ReadKey();
         }
     }

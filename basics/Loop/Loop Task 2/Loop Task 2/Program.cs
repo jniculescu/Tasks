@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-//Jani Niculescu 19.2.2017 Loop Task 
+//Jani Niculescu 19.2.2017 Loop Task 2
 namespace Loop_Task_2
 {
     class Program
@@ -13,26 +13,26 @@ namespace Loop_Task_2
         static void Main(string[] args)
         {
             int N = 0;
-            int summa = 0;
+            int sum = 0;
 
             //input
-            Console.Write("Anna N arvo: ");
+            Console.Write("Give value for N: ");
             N = int.Parse(Console.ReadLine());
 
-            //numeron tarkistus
+            //num check
             if (N < 1)
             {
-                Console.WriteLine("Määrittelemätön numero.");
+                Console.WriteLine("Undefined number.");
                 Console.ReadKey();
             }
 
-            //kertomisen looppi
+            //loop
             for (int i = 1; i <= N; i++)
             {
-                summa = summa + i;
+                sum = sum + i;
             }
 
-            Console.WriteLine("Summa: " + summa);
+            Console.WriteLine("Summa: " + sum);
             Console.ReadKey();
 
 

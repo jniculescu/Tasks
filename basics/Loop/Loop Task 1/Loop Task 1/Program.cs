@@ -14,26 +14,26 @@ namespace Loop_Task_1
         {
 
             int N = 0;
-            int summa = 1;
+            int sum = 1;
 
             //input
-            Console.Write("Anna numero: ");
+            Console.Write("Enter number: ");
             N = int.Parse(Console.ReadLine());
 
             //num check
             if (N < 1)
             {
-                Console.WriteLine("Määrittelemätön numero.");
+                Console.WriteLine("Undefined number.");
                 Console.ReadKey();
             }
 
-            //kertomisen looppi
+            //loop
             for (int i = 1; i <= N; i++)
             {
-                summa = summa * i;
+                sum = sum * i;
             }
 
-            Console.WriteLine("Summa: " + summa);
+            Console.WriteLine("Sum: " + sum);
             Console.ReadKey();
 
         }

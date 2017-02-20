@@ -18,19 +18,17 @@ namespace IFtask5
             Console.Write("Ikä: ");
             int age = int.Parse(Console.ReadLine());
 
-           if(age < 7)
+            if (age < 7)
             {
                 discount = 100;
                 discounted = true;
             }
-
-            else if(age >= 7 && age <= 15 && discounted == false)
+            else if (age >= 7 && age <= 15 && discounted == false)
             {
                 discount = discount + 50;
                 discounted = true;
             }
-
-            else if(age >= 65 && discounted == false)
+            else if (age >= 65 && discounted == false)
             {
                 discount = discount + 50;
                 discounted = true;
@@ -40,39 +38,39 @@ namespace IFtask5
             if (age > 15 && age < 65)
             {
                 Console.WriteLine("Oletko Varusmies? Y/N");
-                string yn2 = Console.ReadLine();
+                string conscriptResponse = Console.ReadLine();
 
-                if (yn2 == "Y" || yn2 == "y" && discounted == false)
+                if (conscriptResponse == "Y" || conscriptResponse == "y" && discounted == false)
                 {
                     discount = discount + 50;
                     discounted = true;
                 }
 
-                 //jos varusmies ei muita alennuksia
-               else
+                //jos varusmies ei muita alennuksia
+                else
                 {
                     Console.WriteLine("Oletko Mtk:n jäsen? Y/N");
-                     string yn1 = Console.ReadLine();
+                    string mtkResponse = Console.ReadLine();
 
-                      if (yn1 == "Y" || yn1 == "y" && discounted == false)
-                          {
-                               discount = discount + 15;
-                               discounted = true;
-                          }
+                    if (mtkResponse == "Y" || mtkResponse == "y" && discounted == false)
+                    {
+                        discount = discount + 15;
+                        discounted = true;
+                    }
 
                     Console.WriteLine("Oletko opiskelija? Y/N");
-                    string yn3 = Console.ReadLine();
+                    string studentResponse = Console.ReadLine();
 
-                          if (yn3 == "Y" || yn3 == "y" && discounted == false)
-                              {
-                                  discount = discount + 45;
-                                  discounted = true;
-                             }
+                    if (studentResponse == "Y" || studentResponse == "y" && discounted == false)
+                    {
+                        discount = discount + 45;
+                        discounted = true;
+                    }
 
                     //erikoisehto
-                    if (yn1 == "Y" || yn1 == "y")
+                    if (mtkResponse == "Y" || mtkResponse == "y")
                     {
-                        if (yn3 == "Y" || yn3 == "y")
+                        if (studentResponse == "Y" || studentResponse == "y")
                         {
                             discount = 15 + 45;
                         }
@@ -80,10 +78,10 @@ namespace IFtask5
                 }
             }
             //lopullisen hinnan laskeminen
-           decimal lopullinen = (price - (price * Convert.ToDecimal(discount/100m)));
+            decimal lopullinen = (price - (price * Convert.ToDecimal(discount / 100m)));
 
-           Console.WriteLine("Lippusi hinta on: " + lopullinen); 
-           Console.ReadKey();
+            Console.WriteLine("Lippusi hinta on: " + lopullinen);
+            Console.ReadKey();
         }
     }
 }

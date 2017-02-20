@@ -19,14 +19,14 @@ namespace Loop_task_9
             {
                 int y = rnd.Next(2);
 
-                    if(y == 0)
-                        {
-                            heads++;
-                        }
-                    if(y == 1)
-                        {
-                            tails++;
-                        }
+                if (y == 0)
+                {
+                    heads++;
+                }
+                if (y == 1)
+                {
+                    tails++;
+                }
             }
 
             Console.WriteLine("Coin has been tossed 20 times.");

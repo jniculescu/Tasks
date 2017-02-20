@@ -20,18 +20,14 @@ namespace Functions_task_3
 
         static public int Parameters(int answer)
         {
-
-
             do
             {
-
                 answer = int.Parse(Console.ReadLine());
 
                 if (answer < 0 || answer > 10)
                 {
                     Console.WriteLine("Invalid answer please enter again: ");
                 }
-
             }
             while (answer < 0 || answer > 10);
             return answer;

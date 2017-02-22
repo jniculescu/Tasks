@@ -30,40 +30,75 @@ namespace IBAN_calculator
         private void button1_Click(object sender, EventArgs e)
         {
 
-
-            string bban = textBox1.Text;
+            var bban = textBox1.Text;
             bban = bban.Replace("-", "");
+            var bbanarr = bban.ToCharArray().Select(c => c.ToString()).ToArray();
 
-            string ibanchk = "123";
+            //tarkisteen(pankki?) laskeminen/ eka numero = 3 => 2numeroa / 4 tai 7 => 3 numeroa  / muut 1 numero("rahalaitosten" tunnukset)
 
-            int numiban = int.Parse(ibanchk);
-
-
-            bool correct;
-
-            if(numiban % 97 == 1)
+            if (bbanarr[0] == "4" || bbanarr[0] == "5")
             {
-                correct = true;
+                while (bban.Length <= 13)
+                {
+                    bban = bban.Insert(6, "0");
+                }
             }
             else
             {
-                correct = false;
+                while (bban.Length <= 13)
+                {
+                    bban = bban.Insert(5, "0");
+                }
             }
 
-            if(correct == true)
+            //IBAN maakoodin tarkisteen lakeminen ja lisäys
+
+            if (chkBox1.Checked)
             {
-                //this is right
+                bban = bban.Insert(14, "FI00");
             }
-            //tarkisteen(pankki?) laskeminen/ eka numero = 3 => 2numeroa / 4 tai 7 => 3 numeroa  / muut 1 numero("rahalaitosten" tunnukset
-
-            if(bban[0] = 3)
+            else
             {
+                MessageBox.Show("Country required");
+            }
+            bban = bban.Replace("FI", "1518");
+            decimal numiban = decimal.Parse(bban);
 
+            numiban = numiban % 97;
+            var numchk = 98 - numiban;
+            string chk;
+
+            if (numchk >= 10)
+            {
+                chk = numchk.ToString();
+            }
+            else
+            {
+                chk = numchk.ToString();
+                chk = chk.Insert(0, "0");
             }
 
-            //syöttö oikean mallinen
+            //validity check
+            if (numiban % 97 != 1)
+            {
+                var iban = bban;
+                iban = iban.Remove(14);
+                iban = iban.Insert(0, "FI" + chk);
 
-            //IBAN maakoodin tarkisteen lakeminen
+                textBox2.Text = iban;
+            }
+            else
+            {
+                MessageBox.Show("Error");
+            }
+
+            MessageBox.Show("Click OK to exit");
+            Application.Exit();
+        }
+
+        private void chkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

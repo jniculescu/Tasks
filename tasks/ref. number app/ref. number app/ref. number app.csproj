@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Corechecker.cs" />
+    <Compile Include="Corecreate.cs" />
     <Compile Include="CrateRef.cs">
       <SubType>Form</SubType>
     </Compile>

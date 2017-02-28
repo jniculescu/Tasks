@@ -14,16 +14,28 @@ namespace Reference_app
 
         public bool isChecklen(string refnumber)
         {
-            bool err;
-            if (refnumber.Length >= 4 && refnumber.Length <= 20)
-            {
-                err = false;
-            }
 
+            bool err;
+            string refnospace = refnumber.Replace(" ", "");
+            bool result = !refnospace.Any(x => char.IsLetter(x));
+
+            if (result == true)
+            {
+                if (refnospace.Length >= 4 && refnospace.Length <= 20)
+                {
+
+                    err = false;
+                }
+
+                else
+                {
+                    err = true;
+
+                }
+            }
             else
             {
                 err = true;
-
             }
             return err;
         }

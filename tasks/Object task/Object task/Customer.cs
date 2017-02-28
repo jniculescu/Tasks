@@ -8,24 +8,34 @@ namespace Object_task
 {
     class Customer
     {
-        public string[] _frstname;
-        public string[] _lstname;
-        public string[] _bnknum;
+        private string _frstname;
+        private string _lstname;
+        private string _accnum;
 
-        void Person()
+        public string FirstName
         {
-            Bank bank = new Bank();
-
-            for (int i = 0; i < 3; i++)
-            {
-                _frstname[i] = Console.ReadLine();
-                _lstname[i] = Console.ReadLine();
-                _bnknum[i] = bank._bnknum[i]; 
-
-
-            }
-          //  Console.WriteLine(_frstname[] + " " + _lstname[] + " " + _bnknum[]);
+            get { return _frstname; }
+            set { _frstname = value; }
+        }
+        public string LastName
+        {
+            get { return _lstname; }
+            set { _lstname = value; }
+        }
+        public string AccountNumber
+        {
+            get { return _accnum; }
         }
 
+        public Customer(string firstName, string lastName, string accountNumber)
+        {
+            _frstname = firstName;
+            _lstname = lastName;
+            _accnum = accountNumber;
+        }
+        public override string ToString()
+        {
+            return string.Format("{0} {1}\t({2})", _frstname, _lstname, _accnum);
+        }
     }
 }

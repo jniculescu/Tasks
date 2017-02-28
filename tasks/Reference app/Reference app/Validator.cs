@@ -35,7 +35,7 @@ namespace Reference_app
         {
             if (validate.isChecklen(txtRefnum.Text) == true)
             {
-                txtResult.Text = "Invalid Length";
+                txtResult.Text = "Error";
             }
             else
             {  

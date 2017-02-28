@@ -30,12 +30,20 @@ namespace Reference_app
         {
             if (create.Check(txtInput.Text) == false)
             {
-                txtInput.Text = "Invalid Length";
+                txtInput.Text = "Error";
             }
             else
             {
-                create.Create(txtOutput.Text, txtAmount.Text);
-                txtOutput.Text = create.Results();
+                if (int.Parse(txtAmount.Text) > 1)
+                {
+                    create.MultipleRefs(txtInput.Text, txtAmount.Text);
+                }
+                else
+                {
+                    create.Create(txtInput.Text);
+                    txtOutput.Text = create.Results();
+                }
+
             }
 
         }

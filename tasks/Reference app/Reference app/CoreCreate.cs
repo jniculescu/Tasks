@@ -11,17 +11,32 @@ namespace Reference_app
     class CoreCreate
     {
         private Creator create;
-        private CoreValidate valid;
         public string result;
+        public int[] multipliers = { 1, 3, 7 };
+        public int sum = 0;
+        public int mult = 0;
+        public int amount;
+        public string refnumbernospace;
+        public char[] inputArr;
 
         public bool Check(string refnum)
         {
-            valid = new CoreValidate();
-            bool err = false;
-
-            if (valid.isChecklen(refnum) == true)
+            bool err;
+            string refnospace = refnum.Replace(" ", "");
+            bool result = !refnospace.Any(x => char.IsLetter(x));
+            if (result == false)
             {
-                err = false;
+                if (refnospace.Length >= 4 && refnospace.Length <= 19)
+                {
+
+                    err = false;
+                }
+
+                else
+                {
+                    err = true;
+
+                }
             }
             else
             {
@@ -30,15 +45,12 @@ namespace Reference_app
             return err;
         }
 
-        public void Create(string input, string amoun)
+        public void Create(string input)
         {
-            int[] multipliers = { 1, 3, 7 };
-            int sum = 0;
-            int mult = 0;
-            int amount = int.Parse(amoun);
-
-            char[] inputArr = input.ToCharArray();
-            List<string> numbers = new List<string>();
+            sum = 0;
+            mult = 0;
+            refnumbernospace = input.Replace(" ", "");
+            inputArr = refnumbernospace.ToCharArray();
 
             for (int i = 0; i < inputArr.Length; i++)
             {
@@ -52,28 +64,46 @@ namespace Reference_app
 
             int chk = 10 * ((sum + 9) / 10);
             int diff = chk - sum;
-
             result = input.Insert(input.Length, diff.ToString());
-
-            if (amount > 1)
-            {
-                /*
-                numbers.Add();
-
-
-
-                for (int i = input[input.Length]; i <= amount; i++)
-                {
-                    var replace = i.ToString().ToChar();
-                    input.Replace(input.Length, replace);
-                }*/
-            }
-
-
         }
+
         public string Results()
         {
             return result;
+        }
+
+        public void MultipleRefs(string input, string amoun)
+        {
+            List<string> numbers = new List<string>();
+            amount = int.Parse(amoun);
+
+            int replacenum = int.Parse((inputArr[refnumbernospace.Length - 1]).ToString());
+
+            int placement = int.Parse(inputArr[refnumbernospace.Length - 1].ToString());
+            placement = placement - 1;
+            for (int i = 1; i <= amount; i++)
+            {
+                input = input.Insert(placement, replacenum.ToString());
+                replacenum = replacenum + 1;
+                input = input.Remove((placement + 1));
+
+                for (int k = 0; k < inputArr.Length; k++)
+                {
+                    if (mult > 2)
+                    {
+                        mult = 0;
+                    }
+                    sum = sum + (multipliers[mult] * int.Parse(inputArr[k].ToString()));
+                    mult++;
+                }
+
+                int chk = 10 * ((sum + 9) / 10);
+                int difference = chk - sum;
+                input = input.Insert(input.Length, difference.ToString());
+
+                numbers.Add(input);
+
+            }
         }
     }
 }

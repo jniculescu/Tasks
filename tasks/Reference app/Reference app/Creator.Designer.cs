@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.txtOutput = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.txtInput = new System.Windows.Forms.TextBox();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.btnCreate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // btnBack
             // 
-            this.button1.Location = new System.Drawing.Point(177, 157);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 50);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Back";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnBack.Location = new System.Drawing.Point(177, 157);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(95, 50);
+            this.btnBack.TabIndex = 0;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
-            // textBox3
+            // txtOutput
             // 
-            this.textBox3.Location = new System.Drawing.Point(25, 104);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 103);
-            this.textBox3.TabIndex = 15;
+            this.txtOutput.Location = new System.Drawing.Point(25, 104);
+            this.txtOutput.Multiline = true;
+            this.txtOutput.Name = "txtOutput";
+            this.txtOutput.Size = new System.Drawing.Size(100, 103);
+            this.txtOutput.TabIndex = 15;
             // 
             // label1
             // 
@@ -82,45 +82,45 @@
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 12;
             this.label3.Text = "Amount";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // textBox1
+            // txtInput
             // 
-            this.textBox1.Location = new System.Drawing.Point(25, 41);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(94, 20);
-            this.textBox1.TabIndex = 13;
+            this.txtInput.Location = new System.Drawing.Point(25, 41);
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(94, 20);
+            this.txtInput.TabIndex = 13;
             // 
-            // textBox2
+            // txtAmount
             // 
-            this.textBox2.Location = new System.Drawing.Point(191, 38);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(48, 20);
-            this.textBox2.TabIndex = 14;
-            this.textBox2.Text = "1";
+            this.txtAmount.Location = new System.Drawing.Point(191, 38);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.Size = new System.Drawing.Size(48, 20);
+            this.txtAmount.TabIndex = 14;
+            this.txtAmount.Text = "1";
             // 
-            // button2
+            // btnCreate
             // 
-            this.button2.Location = new System.Drawing.Point(177, 88);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(95, 50);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "Create";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnCreate.Location = new System.Drawing.Point(177, 88);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(95, 50);
+            this.btnCreate.TabIndex = 16;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // Creator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(286, 236);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnCreate);
+            this.Controls.Add(this.txtOutput);
+            this.Controls.Add(this.txtAmount);
+            this.Controls.Add(this.txtInput);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnBack);
             this.Name = "Creator";
             this.Text = "Creator";
             this.ResumeLayout(false);
@@ -130,13 +130,13 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button btnBack;
+        private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox txtInput;
+        private System.Windows.Forms.TextBox txtAmount;
+        private System.Windows.Forms.Button btnCreate;
     }
 }

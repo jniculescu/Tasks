@@ -20,24 +20,24 @@ namespace Reference_app
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+           
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnValidate_Click(object sender, EventArgs e)
         {
             Validator validate = new Validator();
             validate.Show();
             Visible = false;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnCreate_Click(object sender, EventArgs e)
         {
             Creator create = new Creator();
             create.Show();
             Visible = false;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

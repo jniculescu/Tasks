@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ref._number_app
+namespace Object_task
 {
-    class Corechecker
-{
-    string refnum;
+    class Program
+    {
+        static void Main(string[] args)
+        {
 
-    
 
-}
+        }
+    }
 }

@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CoreCreate.cs" />
+    <Compile Include="CoreValidate.cs" />
     <Compile Include="Creator.cs">
       <SubType>Form</SubType>
     </Compile>

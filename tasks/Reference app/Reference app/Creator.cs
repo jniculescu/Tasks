@@ -12,20 +12,31 @@ namespace Reference_app
 {
     public partial class Creator : Form
     {
+        private CoreCreate create;
         public Creator()
         {
             InitializeComponent();
+            create = new CoreCreate();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnBack_Click(object sender, EventArgs e)
         {
             Form1 main = new Form1();
             main.Show();
             Visible = false;
         }
 
-        private void label3_Click(object sender, EventArgs e)
+        private void btnCreate_Click(object sender, EventArgs e)
         {
+            if (create.Check(txtInput.Text) == false)
+            {
+                txtInput.Text = "Invalid Length";
+            }
+            else
+            {
+                create.Create(txtOutput.Text, txtAmount.Text);
+                txtOutput.Text = create.Results();
+            }
 
         }
     }

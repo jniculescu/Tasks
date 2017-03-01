@@ -36,7 +36,9 @@ namespace Reference_app
             {
                 if (int.Parse(txtAmount.Text) > 1)
                 {
+                    create.Create(txtInput.Text);
                     create.MultipleRefs(txtInput.Text, txtAmount.Text);
+                    txtOutput.Text = create.Sendlist();
                 }
                 else
                 {

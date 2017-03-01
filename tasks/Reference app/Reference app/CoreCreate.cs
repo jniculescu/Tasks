@@ -18,6 +18,9 @@ namespace Reference_app
         public int amount;
         public string refnumbernospace;
         public char[] inputArr;
+        public List<string> numbers;
+        private int replacenum;
+        private int placement;
 
         public bool Check(string refnum)
         {
@@ -74,13 +77,13 @@ namespace Reference_app
 
         public void MultipleRefs(string input, string amoun)
         {
-            List<string> numbers = new List<string>();
+            numbers = new List<string>();
             amount = int.Parse(amoun);
 
-            int replacenum = int.Parse((inputArr[refnumbernospace.Length - 1]).ToString());
+            replacenum = int.Parse((inputArr[refnumbernospace.Length - 1]).ToString());
 
-            int placement = int.Parse(inputArr[refnumbernospace.Length - 1].ToString());
-            placement = placement - 1;
+            placement = int.Parse(inputArr[refnumbernospace.Length - 1].ToString());
+            //placement = placement - 1;
             for (int i = 1; i <= amount; i++)
             {
                 input = input.Insert(placement, replacenum.ToString());
@@ -100,10 +103,14 @@ namespace Reference_app
                 int chk = 10 * ((sum + 9) / 10);
                 int difference = chk - sum;
                 input = input.Insert(input.Length, difference.ToString());
-
                 numbers.Add(input);
-
             }
         }
+
+        public string Sendlist()
+        {
+            return String.Join(", ", numbers);
+        }
+
     }
 }

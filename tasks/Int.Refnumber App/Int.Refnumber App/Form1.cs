@@ -51,8 +51,11 @@ namespace Int.Refnumber_App
                 create.Create(txtInputCreate.Text);
                 txtOutputCreate.Text = create.Results();
             }
-
-
+            else
+            {
+                txtOutputCreate.Text = "Error";
+            }
+            
 
 
         }

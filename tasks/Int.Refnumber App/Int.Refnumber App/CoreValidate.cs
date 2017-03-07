@@ -48,9 +48,8 @@ namespace Int.Refnumber_App
 
         public string Fullvalidate(string refnumber)
         {
-            var referencenum = refnumber;
-            referencenum = refnumber.Replace("R", "27");
-            referencenum = refnumber.Replace("F", "15");
+            string referencenum = refnumber.Replace("F", "15");
+            referencenum = refnumber.Replace("R", "27") ;
             string startnums = referencenum.Substring(0, 6);
             string refchk = referencenum.Insert(refnumber.Length, startnums);
             refchk = refchk.Remove(0, 6);

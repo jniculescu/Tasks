@@ -15,17 +15,45 @@ namespace Int.Refnumber_App
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void btnValidate_Click(object sender, EventArgs e)
         {
             CoreValidate validate = new CoreValidate();
+            Lengthchk lengthcheck = new Lengthchk();
+
+            if (lengthcheck.isChecklenvalid(txtInputValidate.Text) == false)
+            {
+                if (validate.Validating(txtInputValidate.Text) == true)
+                {
+                    txtOutputValidate.Text = validate.Fullvalidate(txtInputValidate.Text);
+                }
+                else
+                {
+                    txtOutputValidate.Text = "Error";
+                }
+            }
+            else
+            {
+                txtOutputValidate.Text = "Error";
+            }
 
         }
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
             CoreCreate create = new CoreCreate();
+            Lengthchk lengthcheck = new Lengthchk();
+
+            if (lengthcheck.isChecklencreate(txtInputCreate.Text) == false)
+            {
+                create.Create(txtInputCreate.Text);
+                txtOutputCreate.Text = create.Results();
+            }
+
+
+
 
         }
     }

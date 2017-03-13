@@ -9,64 +9,41 @@ namespace Object_task
     class Bank
     {
         private string _name;
-        private List<Account> _accounts;
-        private Random _rnd = new Random();
-
-        public string Name
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
-
-        public List<Account> Accounts
-        {
-            get { return _accounts; }
-        }
+        private List<BankAccount> _bankAccounts;
 
         public Bank(string name)
         {
-            _name = name;
-            _accounts = new List<Account>();
+            this._name = name;
+            this._bankAccounts = new List<BankAccount>();
         }
 
-        public string CreateAccount()
+        public string NewAccount()
         {
-            string accountNumber = "FI";
-            for (int i = 0; i < 16; i++)
+            Random rnd = new Random();
+            decimal ibanpart1 = rnd.Next(1000000000);
+            decimal ibanpart2 = rnd.Next(100000);
+
+            var bankAccNum = "FI" + ibanpart1 + ibanpart2;
+            for (int i = 4; i < bankAccNum.Length; i += 4)
             {
-                accountNumber += _rnd.Next(0, 10).ToString();
+                bankAccNum = bankAccNum.Insert(i, " ");
+                i++;
             }
-            _accounts.Add(new Account(accountNumber));
-            return accountNumber;
+            Console.WriteLine("New IBAN for customer: " + bankAccNum);
+
+            string day = rnd.Next(1, 29).ToString();
+            string month = rnd.Next(1, 12).ToString();
+            string year = rnd.Next(2016, 2018).ToString();
+
+            var accCreationDate =  day + "/" + month + "/" + year;
+
+            _bankAccounts.Add(new Account(bankAccNum, accCreationDate));
+            return bankAccNum;
         }
 
-        public List<Transactions> GetTransactionsForCustomer(string accountNumber)
+        public BankAccount GetBankAccount(string accountNumber)
         {
-            return (from account in _accounts
-                where account.AccountNumber == accountNumber
-                select account).FirstOrDefault().Transactions;
-        }
-
-        public List<Transactions> GetTransactionsForCustomerForTimeSpan(string accountNumber, DateTime startTime,
-            DateTime endTime)
-        {
-            return (from account in _accounts
-                where account.AccountNumber == accountNumber
-                select account).FirstOrDefault().GetTransactionsForTimeSpan(startTime, endTime);
-        }
-
-        public double GetBalanceForCustomer(string accountNumber)
-        {
-            return (from account in _accounts
-                where account.AccountNumber == accountNumber
-                select account).FirstOrDefault().Balance;
-        }
-
-        public bool AddTransactionForCustomer(string accountNumber, Transactions transaction)
-        {
-            return (from account in _accounts
-                where account.AccountNumber == accountNumber
-                select account).First().AddTransaction(transaction);
+            return _bankAccounts.Find(x => x.AccNum.Equals(accountNumber));
         }
     }
 }

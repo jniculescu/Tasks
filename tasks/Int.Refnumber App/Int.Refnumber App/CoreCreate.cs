@@ -21,13 +21,11 @@ namespace Int.Refnumber_App
             string initialresult = input.Insert(0, "RF");
             initialresult = initialresult.Insert(2, chknum);
 
-           /* for (int i = 0; i < refObj.numberOfRefs; i++)
+            for (int i = 4; i < initialresult.Length; i+= 4)
             {
-                for (int j = refObj.finalRefs[i].Length; j > 0; j -= 5)
-                {
-                    refObj.finalRefs[i] = refObj.finalRefs[i].Insert(j, " ");
-                }
-            }*/
+                initialresult = initialresult.Insert(i, " ");
+                i++;
+            }
 
             result = initialresult;
         }

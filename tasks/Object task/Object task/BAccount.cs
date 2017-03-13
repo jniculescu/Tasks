@@ -6,15 +6,19 @@ using System.Threading.Tasks;
 
 namespace Object_task
 {
-    class Account
+    class BankAccount
     {
         private string _accountNumber;
+        private string _creationDate;
         private List<Transactions> _transactions;
         private double _balance;
 
-        public string AccountNumber
+        public Account(string accountNumber, string creationDate)
         {
-            get { return _accountNumber; }
+            this._accountNumber = accountNumber;
+            this._creationDate = creationDate;
+            _transactions = new List<Transactions>();
+            _balance = 0.0;
         }
 
         public List<Transactions> Transactions
@@ -22,9 +26,15 @@ namespace Object_task
             get
             {
                 return (from transaction in _transactions
-                    orderby transaction.TimeStamp
+                    orderby transaction.Date
                     select transaction).ToList();
             }
+        }
+
+        public string AccNum
+        {
+            get { return _accountNumber; }
+            set { _accountNumber = value; }
         }
 
         public double Balance
@@ -32,12 +42,18 @@ namespace Object_task
             get { return _balance; }
         }
 
-        public Account(string accountNumber)
+        public string CreationDate
         {
-            _accountNumber = accountNumber;
-            _transactions = new List<Transactions>();
-            _balance = 0;
+            get { return _creationDate; }
+            set { _creationDate = value; }
         }
+
+
+
+
+
+
+
 
         public List<Transactions> GetTransactionsForTimeSpan(DateTime startTime, DateTime endTime)
         {

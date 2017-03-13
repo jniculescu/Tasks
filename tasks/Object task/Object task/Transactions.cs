@@ -8,21 +8,27 @@ namespace Object_task
 {
     class Transactions
     {
-        private readonly DateTime _timestamp;
-        private readonly double _sum;
 
-        public DateTime TimeStamp
+        private string _date;
+        private float _amount;
+
+
+        public TransactionActivity(string date, float amount)
         {
-            get { return _timestamp; }
+            this._date = date;
+            this._amount = amount;
         }
-        public double Sum
+
+        public string Date
         {
-            get { return _sum; }
+            get { return _date; }
+            set { _date = value; }
         }
-        public Transactions(double sum, DateTime dateTime)
+
+        public float Amount
         {
-            _timestamp = dateTime;
-            _sum = sum;
+            get { return _amount; }
+            set { _amount = value; }
         }
     }
 }

@@ -68,6 +68,11 @@ namespace Reference_app
             int chk = 10 * ((sum + 9) / 10);
             int diff = chk - sum;
             result = input.Insert(input.Length, diff.ToString());
+            for (int i = 5; i < result.Length; i += 5)
+            {
+                result = result.Insert(i, " ");
+                i++;
+            }
         }
 
         public string Results()
@@ -103,6 +108,11 @@ namespace Reference_app
                 int chk = 10 * ((sum + 9) / 10);
                 int difference = chk - sum;
                 input = input.Insert(input.Length, difference.ToString());
+                for (int y = 5; y < input.Length; y += 5)
+                {
+                    input = input.Insert(y, " ");
+                    y++;
+                }
                 numbers.Add(input);
             }
         }

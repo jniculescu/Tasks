@@ -10,32 +10,23 @@ namespace Object_task
     {
         private string _frstname;
         private string _lstname;
-        private string _accnum;
+        private string _accountnum;
 
-        public string FirstName
-        {
-            get { return _frstname; }
-            set { _frstname = value; }
-        }
-        public string LastName
-        {
-            get { return _lstname; }
-            set { _lstname = value; }
-        }
-        public string AccountNumber
-        {
-            get { return _accnum; }
-        }
-
-        public Customer(string firstName, string lastName, string accountNumber)
+        public Customer(string firstName, string lastName)
         {
             _frstname = firstName;
             _lstname = lastName;
-            _accnum = accountNumber;
         }
+
+        public string BankAccNum
+        {
+            get { return _accountnum;}
+            set { _accountnum = value; }
+        }
+
         public override string ToString()
         {
-            return string.Format("{0} {1}\t({2})", _frstname, _lstname, _accnum);
+            return string.Format("{0} {1}", _frstname, _lstname);
         }
     }
 }

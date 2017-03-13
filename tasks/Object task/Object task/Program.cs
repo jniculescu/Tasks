@@ -10,58 +10,46 @@ namespace Object_task
     {
         static void Main(string[] args)
         {
-            Bank bank = new Bank("Ryöstölä");
+            Console.WriteLine("Bank App Ver. 0.0.1");
+            Console.WriteLine("Enter the name of your bank: ");
+            string bankName = Console.ReadLine();
+            Bank bank = new Bank(bankName);
+
+            Console.WriteLine("Number of customers: ");
+            int numcustomers = Console.Read();
             List<Customer> customers = new List<Customer>();
 
-            customers.Add(new Customer("Tötterö", "Tötterström", bank.CreateAccount()));
-            customers.Add(new Customer("Kukko", "Kukkola", bank.CreateAccount()));
-            customers.Add(new Customer("Hui", "Hai", bank.CreateAccount()));
-
-            Random rnd = new Random();
-
-            for (int i = 0; i > 60; i++)
+            for (int i = 1; i < numcustomers; i++)
             {
-                int c = rnd.Next(0, customers.Count()),
-                  day = rnd.Next(1, 29),
-                      month = rnd.Next(1, 13),
-                      year = rnd.Next(2015, 2018);
-                double s = rnd.NextDouble() * 2000 - 900;
+                Console.WriteLine("Give info of customer #" + i);
+                Console.Write("Lastname :");
+                string lastname = Console.ReadLine();
+                Console.Write("Firstname :");
+                string firstname = Console.ReadLine();
 
-                bank.AddTransactionForCustomer(customers[c].AccountNumber, new Transactions(s, new DateTime(year, month, day)));
+                var customer = new Customer(firstname, lastname);
+                customer.BankAccNum = bank.NewAccount();
+                customers.Add(customer);
+
+                AddTransactions(bank, customer);
             }
-            PrintBalance(bank, customers[0]);
-            PrintBalance(bank, customers[1]);
-            PrintBalance(bank, customers[2]);
-            PrintTransactions(bank.GetTransactionsForCustomer(customers[0].AccountNumber), customers[0]);
-            PrintTransactions(bank.GetTransactionsForCustomer(customers[1].AccountNumber), customers[1]);
-            PrintTransactions(bank.GetTransactionsForCustomer(customers[2].AccountNumber), customers[2]);
+
+            foreach (var customer in customers)
+            {
+                Console.WriteLine("Customer: {0}, account:{1}, balance:{2:F2}",
+                    customer, customer.BankAccNum, bank.SendNumber(customer.BankAccNum).Balance);
+            }
+            Console.WriteLine("---------------------------------");
 
 
-            var endTime = DateTime.Today;
-            var time = new TimeSpan(24 * 30 * 6, 0, 0);
-            var startTime = endTime.Date - time;
-            Console.WriteLine("Tilitapahtumat viimeisen kuuden kuukauden ajalta:");
-            PrintTransactions(bank.GetTransactionsForCustomerForTimeSpan(customers[0].AccountNumber, startTime, endTime), customers[0]);
-            PrintTransactions(bank.GetTransactionsForCustomerForTimeSpan(customers[1].AccountNumber, startTime, endTime), customers[1]);
-            PrintTransactions(bank.GetTransactionsForCustomerForTimeSpan(customers[2].AccountNumber, startTime, endTime), customers[2]);
-
-            Console.ReadKey();
         }
 
-        static void PrintBalance(Bank bank, Customer customer)
+        static void AddTransactions(Bank bank, Customer customer)
         {
-            var balance = bank.GetBalanceForCustomer(customer.AccountNumber);
-            Console.WriteLine("{0} - balance: {1}{2:0.00}", customer.ToString(), balance >= 0 ? "+" : "", balance);
-        }
+            Console.WriteLine("Give amount of withdawal or deposit from customer {0}", customer);
+            var account = bank.GetBankAccount(customer.BankAccNum);
+            var activityDate = account.Date
 
-        static void PrintTransactions(List<Transactions> transactions, Customer customer)
-        {
-            Console.WriteLine("Tilitapahtumat ({0} {1}):", customer.FirstName, customer.LastName);
-            for (int i = 0; i < transactions.Count(); i++)
-            {
-                Console.WriteLine("{0}\t{1}{2:0.00}", transactions[i].TimeStamp.ToShortDateString(), transactions[i].Sum >= 0 ? "+" : "", transactions[i].Sum);
-            }
-            Console.WriteLine("\n");
         }
     }
 }

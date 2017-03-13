@@ -8,5 +8,9 @@ namespace Barcode_Task
 {
     class IntRef
     {
+        public void GetintRef()
+        {
+            Console.WriteLine("Please give the International Refrence number: ");
+        }
     }
 }

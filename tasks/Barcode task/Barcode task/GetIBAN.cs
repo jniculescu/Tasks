@@ -17,17 +17,19 @@ namespace Barcode_Task
         {
             Console.WriteLine("Please Give a valid IBAN number: ");
             IBAN = Console.ReadLine();
+            ChkLen();
         }
 
         public void ChkLen()
         {
             if (IBAN.Length == 18)
             {
-                lengthOk = true;
+                ValidateIBAN();
             }
             else
             {
-                lengthOk = false;
+                Program prog = new Program();
+                prog.Error();
             }
         }
 
@@ -38,11 +40,11 @@ namespace Barcode_Task
             IBANchk1 = IBANchk1.Remove(0, 4);
             IBANchk1 = IBANchk1.Insert(IBANchk1.Length, IBANstrt);
             IBANchk1 = IBANchk1.Replace("FI", "1518");
-            decimal IBANchk2 = (decimal)Int32.Parse(IBANchk1);
+            decimal IBANchk2 = decimal.Parse(IBANchk1);
 
             if (IBANchk2 % 97 == 1)
             {
-                IBANok = true;
+                ReturnIBAN();
             }
             else
             {
@@ -51,17 +53,8 @@ namespace Barcode_Task
             }
         }
         public string ReturnIBAN()
-        {
-            if (IBANok == true && lengthOk == true)
-            {
-                return IBAN;
-            }
-            else
-            {
-                Program prog = new Program();
-                prog.Error();
-                return null;
-            }
+        {            
+               return IBAN;
         }
     }
 }

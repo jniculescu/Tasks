@@ -13,7 +13,15 @@ namespace Barcode_Task
         {
             Console.WriteLine("Please give the amount of payment(XXXXXX,XX): ");
             Console.WriteLine("Euros: ");
-            string euros = Console.ReadLine();         
+            string euros = Console.ReadLine();
+            if (euros.Length < 6)
+            {
+                for (int i = 1; euros.Length < 6; i++)
+                {
+                    euros = euros.Insert(0, "0");
+                }
+            }
+
             return euros;
         }
 

@@ -19,6 +19,7 @@ namespace Barcode_Task
         public void IBAN()
         {
             GetIBAN getIBAN = new GetIBAN();
+            getIBAN.IBANchk();
             string iban = getIBAN.ReturnIBAN();
             iban2 = iban.Remove(0, 2);
             GetSum();
@@ -35,7 +36,8 @@ namespace Barcode_Task
         public void Refnum()
         {
             RefCheck refchk = new RefCheck();
-            refnum = refchk.Validating();
+            refchk.GiveRef();
+            refnum = refchk.refnum;
             GetDate();
         }
 

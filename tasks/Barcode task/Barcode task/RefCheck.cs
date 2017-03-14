@@ -14,6 +14,7 @@ namespace Barcode_Task
         {
             Console.WriteLine("Please Give the non-International Refence Number: ");
             refnum = Console.ReadLine();
+            CheckRef();
         }
 
         public void CheckRef()
@@ -48,7 +49,7 @@ namespace Barcode_Task
             }
         }
 
-        public string Validating()
+        public void Validating()
         {
             string refnumbernospace = refnum.Replace(" ", "");
             var lastnum = refnumbernospace.Length - 1;
@@ -72,16 +73,21 @@ namespace Barcode_Task
             int chk = 10 * ((sum + 9) / 10);
             int diff = chk - sum;
 
-            if (diff == int.Parse(refnum[lastnum + 1].ToString()))
+            if (diff == int.Parse(refnum[lastnum].ToString()))
             {
-                return refnum;
+                Sendref();
             }
             else
             {
                 Program prog = new Program();
                 prog.Error();
-                return null;
+
             }
+        }
+
+        public string Sendref()
+        {
+            return refnum;
         }
     }
 }

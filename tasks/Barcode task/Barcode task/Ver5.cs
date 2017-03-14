@@ -12,13 +12,14 @@ namespace Barcode_Task
         public string euros;
         public string cents;
         public string date;
-        public string intref2;
+        public string intref;
         public string verNum = "5";
 
 
         public void IBAN()
         {
             GetIBAN getIBAN = new GetIBAN();
+            getIBAN.IBANchk();
             string iban = getIBAN.ReturnIBAN();
             iban2 = iban.Remove(0, 2);
             GetSum();
@@ -34,7 +35,10 @@ namespace Barcode_Task
 
         public void GetintRef()
         {
-            
+            IntRef iref = new IntRef();
+            iref.GetintRef();
+            intref = iref.refnumber;
+            GetDate();
         }
 
         public void GetDate()
@@ -48,7 +52,7 @@ namespace Barcode_Task
         {
             Console.WriteLine("=====================================");
             Console.WriteLine("Created barcode: ");
-            Console.WriteLine("{0}{1}{2}{3}000{4}{5}", verNum, iban2, euros, cents, intref2, date);
+            Console.WriteLine("{0}{1}{2}{3}000{4}{5}", verNum, iban2, euros, cents, intref, date);
             Console.ReadKey();
         }
     }

@@ -14,16 +14,6 @@
         <Label x:Name="lblResults" Content="Results" HorizontalAlignment="Left" Margin="33,98,0,0" VerticalAlignment="Top" Width="119" Height="21" FontSize="8"/>
         <Label x:Name="lblJumperName" Content="Name for Jumper #" HorizontalAlignment="Left" Margin="33,42,0,0" VerticalAlignment="Top" Width="79" Height="24" FontSize="8"/>
         <Label x:Name="lblJumpernum" Content="1" HorizontalAlignment="Left" Margin="109,37,0,0" VerticalAlignment="Top" Height="23" Width="21"/>
-        <Slider x:Name="slider" HorizontalAlignment="Left" Margin="270,63,0,0" VerticalAlignment="Top" Height="108" Width="24" Orientation="Vertical" RenderTransformOrigin="0.5,0.5">
-            <Slider.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="180"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Slider.RenderTransform>
-        </Slider>
 
     </Grid>
 </Window>

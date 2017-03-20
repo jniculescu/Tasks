@@ -24,7 +24,7 @@ namespace Ski_jumpTask
             InitializeComponent();
             Jumper jumper = new Jumper();
             jumper.AddJumper();
-
+            txtResults.Text = jumper.Jumpers.ToString();
         }
 
     }

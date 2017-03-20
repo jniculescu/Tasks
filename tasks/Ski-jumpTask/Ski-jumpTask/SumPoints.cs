@@ -8,23 +8,36 @@ namespace Ski_jumpTask
 {
     class SumPoints
     {
+        MainWindow main = new MainWindow();
+        
         public string points;
+        public float  distancePoints;
 
         public void GetPoints()
         {
-            JumpLength();
+            JumpPoints();
         }
 
-        public void JumpLength()
+        public void JumpPoints()
         {
-            Random rnd = new Random();
+            Jumpdistance dist = new Jumpdistance();
 
-            string distance = rnd.ToString();
-        }
+            int distance = dist.distance;
+            if (distance == main.criticalPoint)
+            {
+                distancePoints = main.pointsCpoint;
+            }
+            else if (distance < main.criticalPoint)
+            {
+                distancePoints = main.pointsCpoint - ((main.criticalPoint - distance) * main.distMultip);
+            }
+             
+            else
+            {
+                distancePoints = main.pointsCpoint + ((distance - main.criticalPoint) * main.distMultip);
+            }
 
-        public void Startpoint()
-        {
-            
+            Windage();
         }
 
         public void Windage()
@@ -36,10 +49,6 @@ namespace Ski_jumpTask
         {
             
         }
-
-
-
-
 
         public void Sum()
         {

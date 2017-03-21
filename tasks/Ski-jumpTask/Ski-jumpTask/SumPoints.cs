@@ -8,55 +8,68 @@ namespace Ski_jumpTask
 {
     class SumPoints
     {
-        MainWindow main = new MainWindow();
-        
-        public string points;
-        public float  distancePoints;
+        public float distMultip;
+        public int criticalPoint;
+        public int pointsCpoint;
+        public float windageMultp;
 
-        public void GetPoints()
+        public string points;
+        public float distancePoints;
+        public double windPoints;
+        public float stylePoints;
+        public int distance;
+
+        public void GetPoints(Jumpers jmpers, Jumper jump)
         {
-            JumpPoints();
+            distMultip = jmpers.distMultip;
+            criticalPoint = jmpers.criticalPoint;
+            pointsCpoint = jmpers.pointsCpoint;
+            windageMultp = jmpers.windageMultp;
+            JumpPoints(jmpers, jump);
         }
 
-        public void JumpPoints()
+        public void JumpPoints(Jumpers jumpers, Jumper jump)
         {
             Jumpdistance dist = new Jumpdistance();
+            dist.CalcDistance(this, jump, jumpers);
 
-            int distance = dist.distance;
-            if (distance == main.criticalPoint)
+            distance = dist.distance;
+            if (distance == criticalPoint)
             {
-                distancePoints = main.pointsCpoint;
+                distancePoints = pointsCpoint;
             }
-            else if (distance < main.criticalPoint)
+            else if (distance < criticalPoint)
             {
-                distancePoints = main.pointsCpoint - ((main.criticalPoint - distance) * main.distMultip);
+                distancePoints = pointsCpoint - ((criticalPoint - distance) * distMultip);
             }
-             
+
             else
             {
-                distancePoints = main.pointsCpoint + ((distance - main.criticalPoint) * main.distMultip);
+                distancePoints = pointsCpoint + ((distance - criticalPoint) * distMultip);
             }
 
-            Windage();
+            Windage(jumpers, jump);
         }
 
-        public void Windage()
+        public void Windage(Jumpers jumpers, Jumper jump)
         {
-            
+            Windeffect wind = new Windeffect();
+            wind.HeadorTail(jumpers, jump);
+            windPoints = wind.windCorrection;
+            Style();
         }
 
-        public void StylePoints()
+        public void Style()
         {
-            
+            StylePoints sPoints = new StylePoints();
+            sPoints.Stylepoints();
+            stylePoints = sPoints.pointsStyle;
+            Sum();
         }
 
         public void Sum()
         {
-            
-
-
+            points = (distancePoints + windPoints + stylePoints).ToString();
         }
-
-
     }
 }

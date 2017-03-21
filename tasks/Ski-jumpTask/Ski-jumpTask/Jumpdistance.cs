@@ -8,19 +8,27 @@ namespace Ski_jumpTask
 {
     class Jumpdistance
     {
-        MainWindow main = new MainWindow();
-        Startplatform start = new Startplatform();
+
+
         Random rnd = new Random();
         public int distance;
 
-        public void CalcDistance()
+        public void CalcDistance(SumPoints sumPoints, Jumper jump, Jumpers jumpers)
         {
-            int minDist = main.criticalPoint - 20;
-            int maxDist = main.criticalPoint + 20;
 
-            distance = rnd.Next(minDist, maxDist) + start.distCorrection;
+            int minDist = sumPoints.criticalPoint - 20;
+            int maxDist = sumPoints.criticalPoint + 20;
 
+            distance = rnd.Next(minDist, maxDist);
+            if (jump.jumperAmount > 1)
+            {
+                if (jumpers.platform[jump.i - 1] != jumpers.platform[jump.i - 2])
+                {
+                    Startplatform start = new Startplatform();
+                    start.Platform(jumpers, jump);
+                    distance = distance + start.distCorrection;
+                }
+            }
         }
-
     }
 }

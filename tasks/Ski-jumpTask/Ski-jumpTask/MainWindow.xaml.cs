@@ -33,7 +33,6 @@ namespace Ski_jumpTask
         public MainWindow()
         {
             InitializeComponent();
-
         }
 
         public float distMultip;
@@ -41,15 +40,15 @@ namespace Ski_jumpTask
         public int pointsCpoint;
         public float windageMultp;
 
+
         private void btnLahti_Click(object sender, RoutedEventArgs e)
         {
             distMultip = 1.8f;
             criticalPoint = 116;
             pointsCpoint = 60;
             windageMultp = 1.8f;
-
             Jumpers jumpers = new Jumpers();
-            jumpers.Show();
+            jumpers.Setvars(this);
             this.Close();
         }
     }

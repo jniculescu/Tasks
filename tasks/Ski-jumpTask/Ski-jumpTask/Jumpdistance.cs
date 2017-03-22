@@ -22,6 +22,7 @@ namespace Ski_jumpTask
             distance = rnd.Next(minDist, maxDist);
             if (jump.jumperAmount > 1)
             {
+                if(jump.i != 1)
                 if (jumpers.platform[jump.i - 1] != jumpers.platform[jump.i - 2])
                 {
                     Startplatform start = new Startplatform();

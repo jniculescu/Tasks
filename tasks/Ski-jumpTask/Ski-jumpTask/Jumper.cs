@@ -9,7 +9,7 @@ namespace Ski_jumpTask
     class Jumper
     {
         public List<string> Contestants;
-        public int i = 1;
+        public int i;
         public int jumperAmount;
 
         public void AddJumper(Jumpers jmpers)
@@ -20,20 +20,16 @@ namespace Ski_jumpTask
 
             jumperAmount = int.Parse(jmpers.txtAmount.Text);
 
-
-            List<string> names = jmpers.names;
-
-
             for (i = 1; i <= jumperAmount; i++)
             {
                 sumPoints.GetPoints(jmpers, this);
                 string points = sumPoints.points;
                 string distance = sumPoints.distance.ToString();
 
-                string complete = "Jumper: " + names[i-1] + "\nPoints: " + points + "\nDistance: " + distance + "M";
+                string complete = "Jumper: " + jmpers.names[i - 1] + "\nPoints: " + points + "\nDistance: " + distance + "M";
                 Contestants.Add(complete);
             }
-                Send(jmpers);
+            Send(jmpers);
         }
 
         public void Send(Jumpers jumpers)

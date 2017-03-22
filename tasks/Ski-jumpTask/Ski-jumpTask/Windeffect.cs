@@ -9,14 +9,14 @@ namespace Ski_jumpTask
 {
     class Windeffect
     {
-       // windage= wind strength * (k-point - 36)/20. rounded to 0,5 increments.points amount is 1.8x rounded sum.
+        // windage= wind strength * (k-point - 36)/20. rounded to 0,5 increments.points amount is 1.8x rounded sum.
 
         public double windCorrection;
         public double wind;
 
         public void HeadorTail(Jumpers jumpers, Jumper jump)
         {
-            wind = double.Parse(jumpers.wind[jump.i]);
+            wind = double.Parse(jumpers.wind[jump.i - 1]);
             if (wind > 0)
             {
                 HeadWind(jumpers);

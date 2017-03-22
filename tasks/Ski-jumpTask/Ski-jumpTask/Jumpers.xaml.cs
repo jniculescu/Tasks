@@ -27,8 +27,13 @@ namespace Ski_jumpTask
         public List<string> platform = new List<string>();
         public List<string> names = new List<string>();
         public List<string> wind = new List<string>();
-        public int num;
+        public int num = 1;
         private bool full;
+        public int  amnt;
+
+
+
+
 
         public Jumpers()
         {
@@ -54,23 +59,28 @@ namespace Ski_jumpTask
         private void sldrWind_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             txtWind.Text = sldrWind.Value.ToString();
-
+            txtPlat.Text = sldrPlat.Value.ToString();
         }
-
+        private void sldrPlat_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            txtPlat.Text = sldrPlat.Value.ToString();
+        }
         private void btnName_Click(object sender, RoutedEventArgs e)
         {
             if (!full)
             {
-                num = 1;
+                
                 string name = txtName.Text;
-                string plat = txtPlatform.Text;
+                string plat = sldrPlat.Value.ToString();
                 string windAverage = txtWind.Text;
-
+                
                 wind.Add(windAverage);
                 names.Add(name);
                 platform.Add(plat);
                 num++;
-                if (num > int.Parse(txtAmount.Text))
+                lblJumpernum.Content = num;
+
+                if (num > amnt)
                 {
                     full = true;
                     MessageBox.Show("All Jumpers has the needed info now");
@@ -79,7 +89,7 @@ namespace Ski_jumpTask
                 {
                     full = false;
                 }
-                
+
             }
             else
             {
@@ -87,10 +97,9 @@ namespace Ski_jumpTask
             }
         }
 
-        private void sldrPlatform_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        private void txtAmount_TextChanged(object sender, TextChangedEventArgs e)
         {
-            txtPlatform.Text = sldrPlatform.Value.ToString();
+            amnt = int.Parse(txtAmount.Text);
         }
-
     }
 }
